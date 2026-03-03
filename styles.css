@@ -1,0 +1,42 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #f0f2f5; }
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 400px; }
+.date {
+    color: #666;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+.dose-box {
+    padding: 2rem;
+    border-radius: 15px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+}
+.bleu {
+    background-color: #007bff;
+}
+.blanc {
+    background-color: #ffffff;
+    color: #333;
+    border: 2px solid #000000;
+}
+.label {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="card">
+    <div id="day" class="date">Aujourd'hui</div>
+    <div id="date-display" class="date"></div>
+    <div id="dose-container" class="dose-box">
+        <div id="label-display" class="label">Chargement...</div>
+        <div id="mg-display">-- mg</div>
+    </div>
+</div>
+
+<script>
+    function updateDose() {
+        const now = new Date();
+        // Optionnel : Forcer l'heure à midi pour éviter les bugs de fuseau horaire
+        now.setHours(12, 0, 0, 0);
+
+        // DATE DE RÉFÉRENCE (Exemple : le 1er Janvier 2024 était un jour "BLEU")
+        const refDate = new Date(2024, 0, 1, 12, 0, 0, 0);
+
+        // Calcul de la différence en jours
+        const diffInMs = now - refDate;
+        const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24)) +1;
+
+        const displayDate = document.getElementById('date-display');
+        const container = document.getElementById('dose-container');
+        const label = document.getElementById('label-display');
+        const mg = document.getElementById('mg-display');
+
+        // Affichage de la date du jour
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        displayDate.innerText = now.toLocaleDateString('fr-FR', options);
+
+        // Logique d'alternance (Modulo 2)
+        if (diffInDays % 2 === 0) {
+            // JOUR BLEU
+            container.className = "dose-box bleu";
+            label.innerText = "COULEUR : BLEU";
+            mg.innerText = "125 mg";
+        } else {
+            // JOUR BLANC
+            container.className = "dose-box blanc";
+            label.innerText = "COULEUR : BLANC";
+            mg.innerText = "150 mg";
+        }
+    }
+
+    updateDose();
+</script>
+
+</body>
+</html>
