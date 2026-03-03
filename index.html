@@ -42,16 +42,16 @@
         displayDate.innerText = now.toLocaleDateString('fr-FR', options);
 
         // Logique d'alternance (Modulo 2)
-        if (diffInDays % 2 === 0) {
+        if (diffInDays % 2 === 1) {
             // JOUR BLEU
             container.className = "dose-box bleu";
             label.innerText = "COULEUR : BLEU";
-            mg.innerText = "125 mg";
+            mg.innerText = "150 mg";
         } else {
             // JOUR BLANC
             container.className = "dose-box blanc";
             label.innerText = "COULEUR : BLANC";
-            mg.innerText = "150 mg";
+            mg.innerText = "125 mg";
         }
     }
 
