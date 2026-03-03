@@ -22,27 +22,27 @@
 <script>
     function updateDose() {
         const now = new Date();
-        // Optionnel : Forcer l'heure à midi pour éviter les bugs de fuseau horaire
-        now.setHours(12, 0, 0, 0);
 
-        // DATE DE RÉFÉRENCE (Exemple : le 1er Janvier 2024 était un jour "BLEU")
-        const refDate = new Date(2024, 0, 1, 12, 0, 0, 0);
+        // 1. On définit la date de référence (1er Janvier 2024)
+        const refDate = Date.UTC(2024, 0, 1);
 
-        // Calcul de la différence en jours
-        const diffInMs = now - refDate;
-        const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24)) +1;
+        // 2. On récupère la date du jour en format UTC (Minuit)
+        const todayUTC = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+
+        // 3. Calcul de la différence en jours
+        const diffInDays = Math.round((todayUTC - refDate) / 86400000);
 
         const displayDate = document.getElementById('date-display');
         const container = document.getElementById('dose-container');
         const label = document.getElementById('label-display');
         const mg = document.getElementById('mg-display');
 
-        // Affichage de la date du jour
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        // Affichage de la date du jour proprement
+        const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
         displayDate.innerText = now.toLocaleDateString('fr-FR', options);
 
-        // Logique d'alternance (Modulo 2)
-        if (diffInDays % 2 === 1) {
+        // 4. Logique d'alternance
+        if (diffInDays % 2 === 0) {
             // JOUR BLEU
             container.className = "dose-box bleu";
             label.innerText = "COULEUR : BLEU";
@@ -54,7 +54,7 @@
             mg.innerText = "125 mg";
         }
     }
-
+    // Exécution au chargement
     updateDose();
 </script>
 
