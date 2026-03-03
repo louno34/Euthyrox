@@ -40,3 +40,29 @@ body {
     opacity: 0.9;
     margin-bottom: 5px;
 }
+.refresh-btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #eee;
+    border: none;
+    border-radius: 50px;
+    color: #555;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background 0.3s;
+}
+
+.refresh-btn:active {
+    background-color: #ddd;
+    transform: scale(0.98);
+}
+
+.refresh-icon {
+    font-size: 1.2rem;
+}

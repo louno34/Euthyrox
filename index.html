@@ -17,6 +17,10 @@
         <div id="label-display" class="label">Chargement...</div>
         <div id="mg-display">-- mg</div>
     </div>
+
+    <button class="refresh-btn" onclick="updateDose()">
+        <span class="refresh-icon">↻</span> Actualiser
+    </button>
 </div>
 
 <script>
@@ -54,8 +58,18 @@
             mg.innerText = "125 mg";
         }
     }
-    // Exécution au chargement
+    // 1. Mise à jour au chargement initial
     updateDose();
+
+    // 2. MAGIE : Mise à jour automatique quand on revient sur l'application
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") {
+            updateDose();
+        }
+    });
+
+    // 3. Optionnel : Mise à jour automatique si l'appli reste ouverte au moment de minuit
+    setInterval(updateDose, 60000); // Vérifie chaque minute
 </script>
 
 </body>
